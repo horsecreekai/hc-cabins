@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cabins and RV Parking | Horse Creek Cabins</title>
+	<meta name="description" content="Explore cabin rentals, the Hobet House, and camper spots at Horse Creek Cabins in West Virginia. Call 304-542-8978 for booking information.">
+
+	<link rel="icon" href="images/hcclogo.jpg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--green-900: #163020;
+			--green-800: #1f4d2f;
+			--green-700: #2f6b42;
+			--green-600: #3f8a57;
+			--green-100: #edf6ef;
+			--cream: #f8f6f1;
+			--white: #ffffff;
+			--text: #1f2937;
+			--muted: #667085;
+			--border: #e5e7eb;
+			--shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+			--radius: 22px;
+			--max-width: 1200px;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: "Inter", sans-serif;
+			background: var(--cream);
+			color: var(--text);
+			line-height: 1.6;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		img {
+			max-width: 100%;
+			display: block;
+		}
+
+		.container {
+			width: min(92%, var(--max-width));
+			margin: 0 auto;
+		}
+
+		.topbar {
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			background: rgba(22, 48, 32, 0.94);
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid rgba(255,255,255,0.08);
+		}
+
+		.nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.9rem 0;
+			gap: 1rem;
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			color: white;
+			font-weight: 800;
+		}
+
+		.brand img {
+			width: 56px;
+			height: 56px;
+			object-fit: cover;
+			border-radius: 12px;
+			border: 2px solid rgba(255,255,255,0.15);
+		}
+
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 1.2rem;
+		}
+
+		.nav-links a,
+		.dropdown-toggle {
+			color: white;
+			font-size: 0.95rem;
+			font-weight: 600;
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-family: inherit;
+		}
+
+		.dropdown {
+			position: relative;
+		}
+
+		.dropdown-menu {
+			position: absolute;
+			top: calc(100% + 10px);
+			left: 0;
+			background: white;
+			min-width: 180px;
+			border-radius: 14px;
+			box-shadow: var(--shadow);
+			padding: 0.5rem;
+			display: none;
+		}
+
+		.dropdown:hover .dropdown-menu {
+			display: block;
+		}
+
+		.dropdown-menu a {
+			display: block;
+			padding: 0.75rem 0.9rem;
+			border-radius: 10px;
+			color: var(--text);
+		}
+
+		.dropdown-menu a:hover {
+			background: var(--green-100);
+		}
+
+		.menu-toggle {
+			display: none;
+			background: none;
+			border: none;
+			color: white;
+			font-size: 1.8rem;
+			cursor: pointer;
+		}
+
+		.hero {
+			background:
+				linear-gradient(rgba(9, 20, 13, 0.52), rgba(9, 20, 13, 0.56)),
+				url("images/cabins1.png") center/cover no-repeat;
+			color: white;
+			padding: 6.5rem 0 5rem;
+		}
+
+		.hero-content {
+			max-width: 800px;
+		}
+
+		.hero-badge {
+			display: inline-block;
+			padding: 0.45rem 0.85rem;
+			border-radius: 999px;
+			background: rgba(255,255,255,0.12);
+			border: 1px solid rgba(255,255,255,0.18);
+			font-weight: 600;
+			font-size: 0.92rem;
+			margin-bottom: 1rem;
+		}
+
+		.hero h1 {
+			font-size: clamp(2.4rem, 5vw, 4.4rem);
+			line-height: 1.05;
+			margin-bottom: 1rem;
+			font-weight: 800;
+		}
+
+		.hero p {
+			font-size: 1.08rem;
+			max-width: 700px;
+			color: rgba(255,255,255,0.92);
+			margin-bottom: 1.5rem;
+		}
+
+		.hero-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.9rem;
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0.95rem 1.35rem;
+			border-radius: 999px;
+			font-weight: 700;
+			transition: transform 0.2s ease;
+		}
+
+		.btn:hover {
+			transform: translateY(-2px);
+		}
+
+		.btn-primary {
+			background: white;
+			color: var(--green-900);
+		}
+
+		.btn-secondary {
+			background: rgba(255,255,255,0.12);
+			color: white;
+			border: 1px solid rgba(255,255,255,0.2);
+		}
+
+		.section {
+			padding: 4.5rem 0;
+		}
+
+		.section-heading {
+			text-align: center;
+			margin-bottom: 2.25rem;
+		}
+
+		.section-heading h2 {
+			font-size: clamp(2rem, 4vw, 3rem);
+			color: var(--green-900);
+			margin-bottom: 0.7rem;
+		}
+
+		.section-heading p {
+			max-width: 780px;
+			margin: 0 auto;
+			color: var(--muted);
+		}
+
+		.booking-banner {
+			background: white;
+			box-shadow: var(--shadow);
+			border-radius: 24px;
+			padding: 1.5rem;
+			display: grid;
+			grid-template-columns: 1.2fr 0.8fr;
+			gap: 1rem;
+			align-items: center;
+			margin-top: -2rem;
+			position: relative;
+		}
+
+		.booking-banner h3 {
+			color: var(--green-900);
+			font-size: 1.35rem;
+			margin-bottom: 0.4rem;
+		}
+
+		.booking-banner p {
+			color: var(--muted);
+		}
+
+		.phone-box {
+			background: var(--green-100);
+			border-radius: 18px;
+			padding: 1.1rem 1.2rem;
+			text-align: center;
+		}
+
+		.phone-box .label {
+			font-size: 0.9rem;
+			color: var(--muted);
+			margin-bottom: 0.35rem;
+		}
+
+		.phone-box .phone {
+			font-size: 1.6rem;
+			font-weight: 800;
+			color: var(--green-900);
+		}
+
+		.units-grid {
+			display: grid;
+			gap: 1.75rem;
+		}
+
+		.unit-card {
+			background: white;
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			padding: 1.5rem;
+		}
+
+		.unit-top {
+			display: grid;
+			grid-template-columns: 1.1fr 0.9fr;
+			gap: 1.5rem;
+			align-items: start;
+		}
+
+		.image-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1rem;
+		}
+
+		.image-item {
+			height: 240px;
+			overflow: hidden;
+			border-radius: 18px;
+		}
+
+		.image-item img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		.image-placeholder {
+			aspect-ratio: 4 / 3;
+			border-radius: 18px;
+			background: linear-gradient(135deg, #dfe9e2, #f5f7f2);
+			border: 2px dashed #b9c8bb;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 1rem;
+			color: #60706a;
+			font-weight: 600;
+		}
+
+		.unit-info h3 {
+			font-size: 1.9rem;
+			color: var(--green-900);
+			margin-bottom: 0.45rem;
+		}
+
+		.unit-type {
+			display: inline-block;
+			background: var(--green-100);
+			color: var(--green-900);
+			font-size: 0.88rem;
+			font-weight: 700;
+			padding: 0.4rem 0.7rem;
+			border-radius: 999px;
+			margin-bottom: 1rem;
+		}
+
+		.unit-info p {
+			color: var(--muted);
+			margin-bottom: 1rem;
+		}
+
+		.unit-sections {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1rem;
+			margin-top: 1.25rem;
+		}
+
+		.mini-panel {
+			background: #fafaf9;
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			padding: 1rem;
+		}
+
+		.mini-panel h4 {
+			color: var(--green-900);
+			margin-bottom: 0.6rem;
+			font-size: 1rem;
+		}
+
+		.mini-panel p,
+		.mini-panel li {
+			color: var(--muted);
+			font-size: 0.96rem;
+		}
+
+		.mini-panel ul {
+			padding-left: 1.15rem;
+		}
+
+		.availability-links {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.7rem;
+			margin-top: 0.5rem;
+		}
+
+		.availability-link {
+			display: inline-block;
+			padding: 0.7rem 1rem;
+			border-radius: 999px;
+			background: var(--green-900);
+			color: white;
+			font-weight: 700;
+			font-size: 0.95rem;
+		}
+
+		.note-box {
+			background: var(--green-100);
+			border-radius: 22px;
+			padding: 1.4rem;
+			margin-top: 2rem;
+			color: var(--green-900);
+		}
+
+		.footer {
+			padding: 2rem 0 3rem;
+			text-align: center;
+			color: var(--muted);
+		}
+
+		@media (max-width: 960px) {
+			.unit-top,
+			.booking-banner,
+			.unit-sections {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		@media (max-width: 860px) {
+			.menu-toggle {
+				display: block;
+			}
+
+			.nav-links {
+				position: absolute;
+				top: 78px;
+				left: 4%;
+				right: 4%;
+				flex-direction: column;
+				align-items: flex-start;
+				background: var(--green-900);
+				padding: 1rem;
+				border-radius: 18px;
+				box-shadow: var(--shadow);
+				display: none;
+			}
+
+			.nav-links.open {
+				display: flex;
+			}
+
+			.dropdown {
+				width: 100%;
+			}
+
+			.dropdown-menu {
+				position: static;
+				display: block;
+				background: rgba(255,255,255,0.06);
+				box-shadow: none;
+				padding: 0.4rem;
+				margin-top: 0.5rem;
+				border-radius: 12px;
+			}
+
+			.dropdown-menu a {
+				color: white;
+			}
+
+			.dropdown-menu a:hover {
+				background: rgba(255,255,255,0.08);
+			}
+		}
+
+		@media (max-width: 640px) {
+			.image-grid,
+			.hero-actions {
+				grid-template-columns: 1fr;
+				display: grid;
+			}
+
+			.btn {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header class="topbar">
+		<div class="container nav">
+			<a href="index.html" class="brand">
+				<img src="images/logo.png" alt="Horse Creek Cabins">
+				<span>Horse Creek Cabins</span>
+			</a>
+
+			<button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+			<nav class="nav-links" id="navLinks">
+				<a href="index.html">Home</a>
+				<a href="cabins.html">Cabins & RV Parking</a>
+				<a href="nearbyattractions.html">Nearby Attractions</a>
+				<a href="dining-and-shopping.html">Dining & Shopping</a>
+					<a href="tel:13045428978" class="call-btn">
+					📞 304-542-8978
+				</a>
+				<a href="https://www.facebook.com/horsecreekcabins" target="_blank" class="social-icon" aria-label="Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.03 3.66 9.2 8.44 9.93v-7.02H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.77l-.44 2.9h-2.33V22c4.78-.73 8.44-4.9 8.44-9.93z"/>
+					</svg>
+				</a>
+
+			</nav>
+		</div>
+	</header>
+
+	<section class="hero">
+		<div class="container hero-content">
+			<div class="hero-badge">Cabins, House, and Camper Spots</div>
+			<h1>Find the stay that fits your getaway.</h1>
+			<p>
+				Choose from cozy cabins, the Hobet House, or camper spots at Horse Creek Cabins.
+				For booking questions or to reserve your stay, call us at 304-542-8978.
+			</p>
+			<div class="hero-actions">
+				<a href="tel:13045428978" class="btn btn-primary">Call 304-542-8978</a>
+				<a href="#units" class="btn btn-secondary">View All Units</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container">
+			<div class="booking-banner">
+				<div>
+					<h3>Booking Information</h3>
+					<p>
+						We now offer Cardinal Cabin, Creekside Cabin, Black Bear Cabin,
+						Outlaw Cabin, the Hobet House, and camper spots. Call us directly
+						to ask questions, check options, or book your stay.
+					</p>
+				</div>
+				<div class="phone-box">
+					<div class="label">Call for Booking</div>
+					<a class="phone" href="tel:13045428978">304-542-8978</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="units">
+		<div class="container">
+			<div class="section-heading">
+				<h2>Our Stay Options</h2>
+				<p>
+					All of our stays are within 4 miles of the Hatfield McCoy Ivy Branch Trailhead. No trailering needed, ride your SxS directly from our rentals to the trails!
+				</p>
+			</div>
+
+			<div class="units-grid">
+
+				<article class="unit-card">
+					<div class="unit-top">
+						<div class="image-grid">
+							<div class="image-item">
+								<img src="images/cabins/cardinal2.jpg" alt="Cardinal Cabin Image 1">
+							</div>
+							<div class="image-item">
+								<img src="images/cabins/cardinal3.jpg" alt="Cardinal Cabin Image 2">
+							</div>
+						</div>
+
+						<div class="unit-info">
+							<h3>Cardinal Cabin</h3>
+							<div class="unit-type">Cabin</div>
+							<p>
+								Comfortable and practical, Cardinal Cabin is a great choice for small groups or families looking for a clean, convenient stay near the trails. Located at 6069 Horse Creek Road in Spurlockville, WV, this cabin sits right next door to Creekside Cabin.
+							</p>
+
+							<div class="availability-links">
+								<a href="https://www.airbnb.com/h/horsecreekcabins" class="availability-link" target="_blank">
+									Check Availability
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="unit-sections">
+						<div class="mini-panel">
+							<h4>Description</h4>
+							<p>
+								Inside, you’ll find one bathroom, two queen beds and a twin loft bed, offering flexible sleeping arrangements. The cabin includes a kitchenette with an inductive cooktop, microwave, crockpot, and Keurig, along with linens and towels provided for a hassle-free stay. Outside, there’s plenty of room for trucks and trailers, making it an ideal basecamp for trail riders.
+							</p>
+						</div>
+						<div class="mini-panel">
+							<h4>Policies/Rules</h4>
+							<p>
+							We welcome pets! All rentals are pet-friendly as long as pets are crated when left unattended. For the comfort of all guests, smoking is not allowed inside any unit. Weekend stays (Friday and Saturday) require a 2-night minimum, while single-night bookings are available on weekdays. Cancellations made 48 hours or more prior to check-in are eligible for a full refund.
+							</p>
+						</div>
+					</div>
+				</article>
+
+				<article class="unit-card">
+					<div class="unit-top">
+						<div class="image-grid">
+							<div class="image-item">
+								<img src="images/cabins/creekside.jpg" alt="Creekside Cabin Image 1">
+							</div>
+							<div class="image-item">
+								<img src="images/cabins/creek.jpg" alt="Creekside Cabin Image 2">
+							</div>
+						</div>
+
+						<div class="unit-info">
+							<h3>Creekside Cabin</h3>
+							<div class="unit-type">Cabin</div>
+							<p>
+Creekside Cabin offers a peaceful setting with the same comfort and convenience, perfect for guests who want a relaxing stay close to nature. Also located at 6069 Horse Creek Road in Spurlockville, WV, it sits right beside Cardinal Cabin—making it a great companion rental for families or groups traveling together.
+							</p>
+
+							<div class="availability-links">
+								<a href="https://www.airbnb.com/h/horsecreek" class="availability-link" target="_blank">
+									Check Availability
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="unit-sections">
+						<div class="mini-panel">
+							<h4>Description</h4>
+							<p>
+The cabin features one bathroom, two queen beds and a twin loft bed, comfortably accommodating small groups. Guests will find an inductive cooktop, microwave, crockpot, and Keurig inside, with linens and towels provided. With plenty of parking for trucks and trailers, it’s especially convenient for trail riders, while the quiet setting makes it easy to unwind after a full day.
+							</p>
+						</div>
+						<div class="mini-panel">
+							<h4>Policies/Rules</h4>
+							<p>
+							We welcome pets! All rentals are pet-friendly as long as pets are crated when left unattended. For the comfort of all guests, smoking is not allowed inside any unit. Weekend stays (Friday and Saturday) require a 2-night minimum, while single-night bookings are available on weekdays. Cancellations made 48 hours or more prior to check-in are eligible for a full refund.
+
+							</p>
+						</div>
+					</div>
+				</article>
+
+				<article class="unit-card">
+					<div class="unit-top">
+						<div class="image-grid">
+							<div class="image-item">
+								<img src="images/cabins/blackbear.jpg" alt="Blackbear Cabin Image 1">
+							</div>
+							<div class="image-item">
+								<img src="images/cabins/blackbear1.jpg" alt="Blackbear Cabin Image 2">
+							</div>
+						</div>
+
+						<div class="unit-info">
+							<h3>Black Bear Cabin</h3>
+							<div class="unit-type">Cabin</div>
+							<p>
+Black Bear Cabin is a comfortable and convenient option for guests looking for a relaxing stay near the trails. Located at 2395 Horse Creek Road in Spurlockville, WV, this cabin sits right beside Outlaw Cabin
+							</p>
+
+							<div class="availability-links">
+								<a href="https://www.airbnb.com/h/horsecrk" class="availability-link" target="_blank">
+									Check Availability
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="unit-sections">
+						<div class="mini-panel">
+							<h4>Description</h4>
+							<p>
+Inside, the cabin features one bathroom, two queen beds, providing a comfortable setup for families or small groups. You’ll also find a kitchenette with an inductive cooktop, microwave, crockpot, and Keurig, along with linens and towels provided for a hassle-free stay. With plenty of parking for trucks and trailers, it’s an excellent basecamp for trail riders.
+							</p>
+						</div>
+						<div class="mini-panel">
+							<h4>Policies/Rules</h4>
+							<p>
+							We welcome pets! All rentals are pet-friendly as long as pets are crated when left unattended. For the comfort of all guests, smoking is not allowed inside any unit. Weekend stays (Friday and Saturday) require a 2-night minimum, while single-night bookings are available on weekdays. Cancellations made 48 hours or more prior to check-in are eligible for a full refund.
+
+							</p>
+						</div>
+					</div>
+				</article>
+
+				<article class="unit-card">
+					<div class="unit-top">
+						<div class="image-grid">
+							<div class="image-item">
+								<img src="images/cabins/intoutlaw.jpg" alt="Outlaw Cabin Image 1">
+							</div>
+							<div class="image-item">
+								<img src="images/cabins/outlaw.jpg" alt="Outlaw Cabin Image 2">
+							</div>
+						</div>
+
+						<div class="unit-info">
+							<h3>Outlaw Cabin</h3>
+							<div class="unit-type">Cabin</div>
+							<p>
+Outlaw Cabin offers a cozy and flexible stay, ideal for couples or small groups. Also located at 2395 Horse Creek Road in Spurlockville, WV, it sits right next door to Black Bear Cabin
+							</p>
+
+							<div class="availability-links">
+								<a href="https://www.airbnb.com/h/horsecreekc" class="availability-link" target="_blank">
+									Check Availability
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="unit-sections">
+						<div class="mini-panel">
+							<h4>Description</h4>
+							<p>
+The cabin includes one bathroom and one queen bed and a pull-out couch that converts into a queen, giving you versatile sleeping arrangements. Inside, you’ll find an inductive cooktop, microwave, crockpot, and Keurig, with linens and towels provided. Like the neighboring cabin, there is plenty of parking available for trucks and trailers, making it a convenient choice for trail access.
+							</p>
+						</div>
+						<div class="mini-panel">
+							<h4>Policies/Rules</h4>
+							<p>
+								We welcome pets! All rentals are pet-friendly as long as pets are crated when left unattended. For the comfort of all guests, smoking is not allowed inside any unit. Weekend stays (Friday and Saturday) require a 2-night minimum, while single-night bookings are available on weekdays. Cancellations made 48 hours or more prior to check-in are eligible for a full refund.
+
+							</p>
+						</div>
+					</div>
+				</article>
+
+				<article class="unit-card">
+					<div class="unit-top">
+						<div class="image-grid">
+							<div class="image-item">
+								<img src="images/cabins/DW1.jpg" alt="Hobet House Image 1">
+							</div>
+							<div class="image-item">
+								<img src="images/cabins/DW2.jpg" alt="Hobet House Image 2">
+							</div>
+						</div>
+
+						<div class="unit-info">
+							<h3>Hobet House</h3>
+							<div class="unit-type">House</div>
+							<p>
+Hobet House is a spacious and comfortable option designed for larger groups looking for a convenient stay near the trails. Located at 14 Fork Junction in Spurlockville, WV, this home provides plenty of room to relax, gather, and enjoy your time in the area.
+							</p>
+
+							<div class="availability-links">
+								<a href="https://www.airbnb.com/h/hobethouse" class="availability-link" target="_blank">
+									Check Availability
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="unit-sections">
+						<div class="mini-panel">
+							<h4>Description</h4>
+							<p>
+The house features four bedrooms, each with a queen bed, along with a twin bed in the game room and two large couches that can be used for additional sleeping. With 2 full bathrooms and 1 half bath, it’s well-equipped to comfortably accommodate families or riding groups.Guests will enjoy a full kitchen for easy meal preparation, and linens and towels are provided for a hassle-free stay. Outside, the property includes a large graveled parking lot, offering ample space for trucks, trailers, and multiple vehicles—making Hobet House an excellent basecamp for trail riders.
+							</p>
+						</div>
+						<div class="mini-panel">
+							<h4>Policies/Rules</h4>
+							<p>
+							We welcome pets! All rentals are pet-friendly as long as pets are crated when left unattended. For the comfort of all guests, smoking is not allowed inside any unit. Weekend stays (Friday and Saturday) require a 2-night minimum, while single-night bookings are available on weekdays. Cancellations made 48 hours or more prior to check-in are eligible for a full refund.
+
+							</p>
+						</div>
+					</div>
+				</article>
+
+				<article class="unit-card">
+					<div class="unit-top">
+						<div class="image-grid">
+							<div class="image-item">
+								<img src="images/cabins/camper1.jpg" alt="Camper Spot Image 1">
+							</div>
+							<div class="image-item">
+								<img src="images/cabins/camper2.jpg" alt="Camper Spot Image 2">
+							</div>
+						</div>
+
+						<div class="unit-info">
+							<h3>Camper Spots</h3>
+							<div class="unit-type">RV / Camper Parking</div>
+							<p>
+								We have two camper spots with full hookups provided (electricity, water, septic)!
+							</p>
+						</div>
+					</div>
+
+					<div class="unit-sections">
+						<div class="mini-panel">
+							<h4>Availability</h4>
+							<p>
+								Please contact us by call/text at 304-542-8978 or horsecreekcabins@gmail.com for availability.
+							</p>
+						</div>
+						<div class="mini-panel">
+							<h4>Policies/Rules</h4>
+							<p>
+								We welcome pets! Weekend stays (Friday and Saturday) require a 2-night minimum, while single-night bookings are available on weekdays. Cancellations made 48 hours or more prior to check-in are eligible for a full refund.
+							</p>
+						</div>
+					</div>
+				</article>
+
+			</div>
+
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Horse Creek Cabins. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script>
+		const menuToggle = document.getElementById("menuToggle");
+		const navLinks = document.getElementById("navLinks");
+
+		menuToggle.addEventListener("click", () => {
+			navLinks.classList.toggle("open");
+		});
+	</script>
+</body>
+</html>

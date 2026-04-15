@@ -1,0 +1,633 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dining & Shopping | Horse Creek Cabins</title>
+	<meta name="description" content="Explore local dining, shopping, and essentials near Horse Creek Cabins, including Whitten's Country Store, the Charleston/Southridge area, and Danville, WV.">
+
+	<link rel="icon" href="images/hcclogo.jpg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--green-900: #163020;
+			--green-800: #1f4d2f;
+			--green-700: #2f6b42;
+			--green-100: #edf6ef;
+			--cream: #f8f6f1;
+			--white: #ffffff;
+			--text: #1f2937;
+			--muted: #667085;
+			--border: #e5e7eb;
+			--shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+			--radius: 22px;
+			--max-width: 1200px;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: "Inter", sans-serif;
+			background: var(--cream);
+			color: var(--text);
+			line-height: 1.6;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		img {
+			max-width: 100%;
+			display: block;
+		}
+
+		.container {
+			width: min(92%, var(--max-width));
+			margin: 0 auto;
+		}
+
+		.topbar {
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			background: rgba(22, 48, 32, 0.94);
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid rgba(255,255,255,0.08);
+		}
+
+		.nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.9rem 0;
+			gap: 1rem;
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			color: white;
+			font-weight: 800;
+		}
+
+		.brand img {
+			width: 56px;
+			height: 56px;
+			object-fit: cover;
+			border-radius: 12px;
+			border: 2px solid rgba(255,255,255,0.15);
+		}
+
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 1.2rem;
+		}
+
+		.nav-links a,
+		.dropdown-toggle {
+			color: white;
+			font-size: 0.95rem;
+			font-weight: 600;
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-family: inherit;
+		}
+
+		.dropdown {
+			position: relative;
+		}
+
+		.dropdown-menu {
+			position: absolute;
+			top: calc(100% + 10px);
+			left: 0;
+			background: white;
+			min-width: 180px;
+			border-radius: 14px;
+			box-shadow: var(--shadow);
+			padding: 0.5rem;
+			display: none;
+		}
+
+		.dropdown:hover .dropdown-menu {
+			display: block;
+				}
+
+		.local-food-header {
+			text-align: center;
+			margin-bottom: 1.5rem;
+		}
+
+		.local-food-header h3 {
+			font-size: 1.7rem;
+			color: var(--green-900);
+			margin-bottom: 0.4rem;
+		}
+
+		.local-food-header p {
+			color: var(--muted);
+			font-size: 1rem;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		.dropdown-menu a {
+			display: block;
+			padding: 0.75rem 0.9rem;
+			border-radius: 10px;
+			color: var(--text);
+		}
+
+		.dropdown-menu a:hover {
+			background: var(--green-100);
+		}
+
+		.menu-toggle {
+			display: none;
+			background: none;
+			border: none;
+			color: white;
+			font-size: 1.8rem;
+			cursor: pointer;
+		}
+
+		.hero {
+			background:
+				linear-gradient(rgba(9, 20, 13, 0.52), rgba(9, 20, 13, 0.56)),
+				url("images/food.png") center/cover no-repeat;
+			color: white;
+			padding: 6.5rem 0 5rem;
+		}
+
+		.hero-content {
+			max-width: 800px;
+		}
+
+		.hero-badge {
+			display: inline-block;
+			padding: 0.45rem 0.85rem;
+			border-radius: 999px;
+			background: rgba(255,255,255,0.12);
+			border: 1px solid rgba(255,255,255,0.18);
+			font-weight: 600;
+			font-size: 0.92rem;
+			margin-bottom: 1rem;
+		}
+
+		.hero h1 {
+			font-size: clamp(2.4rem, 5vw, 4.4rem);
+			line-height: 1.05;
+			margin-bottom: 1rem;
+			font-weight: 800;
+		}
+
+		.hero p {
+			font-size: 1.08rem;
+			max-width: 700px;
+			color: rgba(255,255,255,0.92);
+			margin-bottom: 1.5rem;
+		}
+
+		.section {
+			padding: 4.5rem 0;
+		}
+
+		.section-heading {
+			text-align: center;
+			margin-bottom: 2.25rem;
+		}
+
+		.section-heading h2 {
+			font-size: clamp(2rem, 4vw, 3rem);
+			color: var(--green-900);
+			margin-bottom: 0.7rem;
+		}
+
+		.section-heading p {
+			max-width: 780px;
+			margin: 0 auto;
+			color: var(--muted);
+		}
+
+		.feature-grid {
+			display: grid;
+			grid-template-columns: 1.1fr 0.9fr;
+			gap: 1.5rem;
+			align-items: stretch;
+		}
+
+		.card {
+			background: white;
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			padding: 1.6rem;
+		}
+
+		.card h3 {
+			color: var(--green-900);
+			font-size: 1.5rem;
+			margin-bottom: 0.75rem;
+		}
+
+		.card p {
+			color: var(--muted);
+			margin-bottom: 1rem;
+		}
+
+		.badge {
+			display: inline-block;
+			font-size: 0.85rem;
+			font-weight: 700;
+			padding: 0.4rem 0.7rem;
+			border-radius: 999px;
+			background: var(--green-100);
+			color: var(--green-900);
+			margin-bottom: 0.9rem;
+		}
+
+		.button-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.8rem;
+			margin-top: 1rem;
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0.9rem 1.2rem;
+			border-radius: 999px;
+			font-weight: 700;
+			transition: transform 0.2s ease;
+		}
+
+		.btn:hover {
+			transform: translateY(-2px);
+		}
+
+		.btn-primary {
+			background: var(--green-900);
+			color: white;
+		}
+
+		.btn-light {
+			background: var(--green-100);
+			color: var(--green-900);
+		}
+
+		.local-list {
+			display: grid;
+			gap: 0.9rem;
+			margin-top: 1rem;
+		}
+
+		.local-item {
+			background: #fafaf9;
+			border: 1px solid var(--border);
+			border-radius: 16px;
+			padding: 1rem;
+		}
+
+		.local-item strong {
+			display: block;
+			color: var(--green-900);
+			margin-bottom: 0.25rem;
+		}
+
+		.map-grid {
+			display: grid;
+			gap: 1.75rem;
+		}
+
+		.map-card {
+			background: white;
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			overflow: hidden;
+		}
+
+		.map-content {
+			padding: 1.5rem;
+		}
+
+		.map-content h3 {
+			color: var(--green-900);
+			font-size: 1.6rem;
+			margin-bottom: 0.6rem;
+		}
+
+		.map-content p {
+			color: var(--muted);
+			margin-bottom: 1rem;
+		}
+
+		.map-tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.6rem;
+			margin-bottom: 1rem;
+		}
+
+		.tag {
+			background: var(--green-100);
+			color: var(--green-900);
+			padding: 0.45rem 0.75rem;
+			border-radius: 999px;
+			font-size: 0.88rem;
+			font-weight: 700;
+		}
+
+		.map-frame {
+			width: 100%;
+			height: 420px;
+			border: 0;
+			display: block;
+		}
+
+		.note-box {
+			background: var(--green-100);
+			border-radius: 22px;
+			padding: 1.3rem;
+			color: var(--green-900);
+		}
+
+		.footer {
+			padding: 2rem 0 3rem;
+			text-align: center;
+			color: var(--muted);
+		}
+
+		.food-cards {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 1rem;
+			margin-top: 1.25rem;
+		}
+
+		.food-card {
+			background: white;
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			padding: 1rem 1.1rem;
+			box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+			text-align: center;
+		}
+
+		.food-card strong {
+			display: block;
+			color: var(--green-900);
+			font-size: 1rem;
+			margin-bottom: 0.25rem;
+		}
+
+		.food-card span {
+			color: var(--muted);
+			font-size: 0.95rem;
+		}
+
+		@media (max-width: 960px) {
+			.feature-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		@media (max-width: 860px) {
+			.menu-toggle {
+				display: block;
+			}
+
+			.nav-links {
+				position: absolute;
+				top: 78px;
+				left: 4%;
+				right: 4%;
+				flex-direction: column;
+				align-items: flex-start;
+				background: var(--green-900);
+				padding: 1rem;
+				border-radius: 18px;
+				box-shadow: var(--shadow);
+				display: none;
+			}
+
+			.nav-links.open {
+				display: flex;
+			}
+
+			.dropdown {
+				width: 100%;
+			}
+
+			.dropdown-menu {
+				position: static;
+				display: block;
+				background: rgba(255,255,255,0.06);
+				box-shadow: none;
+				padding: 0.4rem;
+				margin-top: 0.5rem;
+				border-radius: 12px;
+			}
+
+			.dropdown-menu a {
+				color: white;
+			}
+
+			.dropdown-menu a:hover {
+				background: rgba(255,255,255,0.08);
+			}
+
+
+		}
+	</style>
+</head>
+<body>
+	<header class="topbar">
+		<div class="container nav">
+			<a href="index.html" class="brand">
+				<img src="images/logo.png" alt="Horse Creek Cabins">
+				<span>Horse Creek Cabins</span>
+			</a>
+
+			<button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+			<nav class="nav-links" id="navLinks">
+				<a href="index.html">Home</a>
+				<a href="cabins.html">Cabins & RV Parking</a>
+				<a href="nearbyattractions.html">Nearby Attractions</a>
+				<a href="dining-and-shopping.html">Dining & Shopping</a>
+								<a href="tel:13045428978" class="call-btn">
+					📞 304-542-8978
+				</a>
+				<a href="https://www.facebook.com/horsecreekcabins" target="_blank" class="social-icon" aria-label="Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.03 3.66 9.2 8.44 9.93v-7.02H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.77l-.44 2.9h-2.33V22c4.78-.73 8.44-4.9 8.44-9.93z"/>
+					</svg>
+				</a>
+
+			</nav>
+		</div>
+	</header>
+
+	<section class="hero">
+		<div class="container hero-content">
+			<div class="hero-badge">Food, Shopping, and Essentials</div>
+			<h1>Explore what’s nearby during your stay.</h1>
+			<p>
+				From local convenience stops to bigger shopping and restaurant areas,
+				here are some useful places guests often want to know about while staying at Horse Creek Cabins.
+			</p>
+		</div>
+	</section>
+
+<section class="section">
+	<div class="container">
+
+		<div class="section-heading">
+			<h2>Featured Local Spot</h2>
+			<p>
+				Start with a nearby local option before heading toward the larger shopping areas.
+			</p>
+		</div>
+
+		<!-- CENTERED FEATURE -->
+		<div class="featured-center">
+			<div class="card featured-card">
+
+				<div class="badge">Local Favorite</div>
+
+				<h3>Whitten’s Country Store</h3>
+
+				<p class="featured-text">
+					Stop by Whitten’s for gas, awesome food including daily specials, snacks,
+					firewood, trail passes, and all of your West Virginia essentials.
+				</p>
+
+				<div class="image-wrapper">
+					<img src="images/Whittens.jpg" alt="Whitten's Country Store" class="feature-image">
+				</div>
+
+				<div class="button-row center">
+					<a class="btn btn-primary" href="https://www.google.com/maps/place/gas+station/@38.1603547,-81.8970659,447m/data=!3m1!1e3!4m6!3m5!1s0x884f4708f381ed9b:0x267c80bb3d97585d!8m2!3d38.1602298!4d-81.8973869!16s%2Fg%2F1v831s_y" target="_blank">
+						Get Directions
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	<div class="local-food-section">
+		<div class="local-food-header">
+	<div class="badge">Nearby Eats</div>
+	<h3>Quick Bites Nearby</h3>
+	<p>Guest-friendly options for a quick bite, comfort food, or a casual stop nearby.</p>
+</div>
+
+		<div class="food-cards">
+			<div class="food-card">
+				<strong>Peking</strong>
+				<span>Danville, WV</span>
+			</div>
+			<div class="food-card">
+				<strong>Giovanni’s Pizza</strong>
+				<span>Danville, WV</span>
+			</div>
+			<div class="food-card">
+				<strong>Tudor’s Biscuit World</strong>
+				<span>Danville, WV</span>
+			</div>
+			<div class="food-card">
+				<strong>Fife Street Brewing</strong>
+				<span>Charleston, WV</span>
+			</div>
+		</div>
+</div>
+
+	</div>
+</section>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container">
+			<div class="section-heading">
+				<h2>Maps for Bigger Nearby Areas</h2>
+
+			</div>
+
+			<div class="map-grid">
+
+				<article class="map-card">
+					<div class="map-content">
+						<div class="badge">Charleston / Southridge Area</div>
+						<h3>Charleston Area Near Walmart</h3>
+
+						<div class="map-tags">
+							<span class="tag">Restaurants</span>
+							<span class="tag">Shopping</span>
+							<span class="tag">Groceries</span>
+							<span class="tag">Essentials</span>
+						</div>
+					</div>
+
+					<iframe
+						class="map-frame"
+						loading="lazy"
+						allowfullscreen
+						referrerpolicy="no-referrer-when-downgrade"
+						src="https://www.google.com/maps?q=Walmart+Southridge+Charleston+WV+restaurants+shopping&output=embed">
+					</iframe>
+				</article>
+
+				<article class="map-card">
+					<div class="map-content">
+						<div class="badge">Danville Area</div>
+						<h3>Danville, West Virginia</h3>
+
+						<div class="map-tags">
+							<span class="tag">Dining</span>
+							<span class="tag">Shopping</span>
+							<span class="tag">Coffee</span>
+							<span class="tag">Everyday Stops</span>
+						</div>
+					</div>
+
+					<iframe
+						class="map-frame"
+						loading="lazy"
+						allowfullscreen
+						referrerpolicy="no-referrer-when-downgrade"
+						src="https://www.google.com/maps?q=Danville+WV+restaurants+shopping&output=embed">
+					</iframe>
+				</article>
+
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Horse Creek Cabins. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script>
+		const menuToggle = document.getElementById("menuToggle");
+		const navLinks = document.getElementById("navLinks");
+
+		menuToggle.addEventListener("click", () => {
+			navLinks.classList.toggle("open");
+		});
+	</script>
+</body>
+</html>
